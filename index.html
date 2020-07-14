@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        /* for (var i = 100; i <= 999; i++) {
+            if (i % 5 == 0) {
+                document.write(i + "是5的倍数<br/>");
+            }
+        } */
+        /* 中午练习
+         1、求1-100的和
+         2、输出1-100之间能被3整除的数
+         3、找出100--999里面有多少个水仙花数，分别输出这些水仙花数？ */
+
+        //练习一
+        /* var sum = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum += i;
+        }
+        document.write("第一题<br/>1~100的和为：" + sum); */
+
+        //练习二
+        /* var str = "";
+        for (var j = 1; j <= 100; j++) {
+            if (j % 3 == 0) {
+                if (j == 3) {
+                    str = str + j;
+                } else {
+                    str = str + "," + j;
+                }
+            }
+        }
+        document.write("<br/>第二题：1~100之间能被3整除的数有<br/>" + str); */
+
+        //练习三
+        /* var count = 0;
+        var str2 = "";
+        for (var k = 100; k <= 999; k++) {
+            var bai = parseInt(k / 100);
+            var shi = parseInt(k % 100 / 10);
+            var ge = k % 10;
+            var num = bai * bai * bai + shi * shi * shi + ge * ge * ge;
+            if (num == k) {
+                count += 1;
+                str2 = str2 + "," + k;
+            }
+        }
+        document.write("<br/>第三题：100--999里面有" + count + "个水仙花数,分别如下<br/>" + str2.substr(1)); */
+
+
+        //练习四：小球弹起
+        /* var height = 100;
+        var zongSum = 0;
+        for (var l = 1; l <= 10; l++) {
+            if (l == 1) {
+                zongSum = height;
+            } else {
+                zongSum += height * 2;
+            }
+            height = height / 2;
+            // document.write("<br/> " + zongSum);
+        }
+        document.write("<br/>第四题：小球第十次弹起经过的总距离为" + zongSum); */
+
+        //练习五：韩信点兵
+        /* for (var m = 1; m > 0; m++) {
+            if (m % 5 == 1 && m % 6 == 5 && m % 7 == 4 && m % 11 == 10) {
+                document.write("<br/>至少有" + m + "个士兵<br/>");
+                break;
+            }
+        } */
+
+        /* 
+        var sum = 1;
+        var isStop = false;
+        do {
+            if (sum % 5 == 1 && sum % 6 == 5 && sum % 7 == 4 && sum % 11 == 10) {
+                document.write("<br/>至少有" + sum + "个士兵<br/>");
+                isStop = true;
+            }
+            sum += 1;
+        } while (!isStop); 
+
+        while (true) {
+            if (sum % 5 == 1 && sum % 6 == 5 && sum % 7 == 4 && sum % 11 == 10) {
+                document.write("<br/>至少有" + sum + "个士兵<br/>");
+                break;
+            }
+            sum += 1;
+        } */
+
+        //练习六：打印*号
+        /* for (var i = 1; i <= 10; i++) {
+            for (var j = 1; j <= i; j++) {
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+
+        for (var i = 10; i >= 1; i--) {
+            for (var j = 1; j <= i; j++) {
+                document.write("*");
+            }
+            document.write("<br/>");
+        } */
+
+        // 练习七：打印乘法表
+        /* for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                var num = j * i;
+                document.write(j + "x" + i + "=" + num + "&nbsp;&nbsp;&nbsp;&nbsp;");
+            }
+            document.write("<br/>");
+        } */
+
+        //练习八：打印空心菱形
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j <= 10 - i; j++) {
+                document.write("&nbsp;");
+            }
+            for (var k = 0; k <= i * 2; k++) {
+                if (k == 0 || k == i * 2) {
+                    document.write("*");
+                } else {
+                    document.write("&nbsp;");
+                    //document.write("#");
+                }
+            }
+            document.write("<br/>");
+        }
+        for (var i = 0; i < 10; i++) {
+            for (var k = 0; k <= i; k++) {
+                document.write("&nbsp;");
+            }
+            for (var j = 0; j <= 10 * 2; j++) {
+                if (j == 0 || j == 10 * 2 - k * 2) {
+                    document.write("*");
+                } else {
+                    i
+                    document.write("&nbsp;");
+                    //document.write("#");
+                }
+            }
+            document.write("<br/>");
+        }
+
+        /* for (var i = 10; i > 0; i--) {
+            for (var k = 0; k <= 10 - i; k++) {
+                document.write("#");
+            }
+            // for (var j = 0; j <= 10 * 2; j++) {
+            //     if (j == 0 || j == 10 * 2 - k * 2) {
+            //         document.write("*");
+            //     } else {
+            //         i
+            //         document.write("&nbsp;");
+            //         //document.write("#");
+            //     }
+            // }
+            document.write("<br/>");
+        } */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
