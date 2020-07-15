@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var arr = [];
+        function addValByArg() {
+            //arguments引用着函数的实参，可以用数组下标的方式"[]"引用arguments的元素。arguments.length为函数实参个数
+            /*1.arguments对象和Function是分不开的
+            2.因为arguments这个对象不能显式创
+            3.arguments对象只有函数开始时才可用 */
+            console.log(arguments);
+            for (var i = 0; i < arguments.length; i++) {
+                arr[i] = arguments[i];
+            }
+        }
+        addValByArg(2, 3, 4, 5);
+
+        //callee 属性是 arguments 对象的一个成员，仅当相关函数正在执行时才可用。
+        //callee 属性的初始值就是正被执行的 Function 对象。实现匿名的递归函数
+        var sum = function (n) {
+            if (1 == n) {
+                return -1;
+            } else {
+                return n + arguments.callee(n - 1);//6+5+4+3+2-1
+            }
+        }
+        document.write(sum(6) + "<br/>");//输出21
+
+        //当使用arguments进行函数传递时，有一些需要注意的点
+        var length = 10;
+        function fn() {
+            console.log(this.length);
+        }
+        var obj = {
+            method: function (fn) {
+                fn();
+                arguments[0]();
+            }
+        };
+        obj.method(fn, 1);//输出：10, 2
+
+        //!!!!!!!!!!!!
+        function fun() {
+            aa = 11;//不使用var进行申明，会出现变量提升
+        }
+        fun();
+        alert(aa);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

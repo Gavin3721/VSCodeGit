@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        /* 
+        //数组的遍历
+        var array = new Array();
+        for (var i = 0; i < 20; i += 2) {
+            array[array.length] = i;
+        }
+        document.write(array); */
+
+
+        //数组去重
+        var arr = [1, 1, 2, 3, 4, 4, 4, 5, 6, 6, 6, 2, 5, 7, 1];
+        var newArr = [];
+
+        //方法一
+        /* for (var i = 0; i < arr.length; i++) {
+            var isYes = false;
+            for (var j = 0; j < newArr.length; j++) {
+                if (arr[i] == newArr[j]) {
+                    isYes = true;
+                    break;
+                }
+            }
+            if (!isYes) {
+                newArr.push(arr[i]);
+            }
+        }
+        document.write("方法一：" + newArr); */
+
+        //方法二
+        /* for (var i = 0; i < arr.length; i++) {
+            //判断当前数组下标为i的元素是否已经保存到临时数组
+            if (newArr.indexOf(arr[i]) == -1) {
+                newArr.push(arr[i]);
+            }
+        }
+        document.write("方法二：" +newArr); */
+
+        //方法三
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    delete arr[j];//被刪除的位置变为undefined
+                }
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] != undefined) {
+                //newArr.push(arr[i]);//push往最后边添加
+                newArr[newArr.length] = arr[i];
+            }
+        }
+        document.write("方法三：" + newArr);
+
+
+        //----------------------------------------------
+        var arr2 = [1, 2, 3, 4, 5, 6];
+        //从最前边添加元素
+        arr2.unshift("45");
+        arr2.unshift("12");
+        arr2.unshift("34");
+        document.write("<br/><br/>arr2：" + arr2);
+        //pop删除最后边的一个元素，并将其返回
+        var popVal = arr2.pop();
+        document.write("<br/>pop之后的arr2：" + arr2);
+        document.write("<br/>" + popVal);
+        //shift删除第一个元素，并将其返回
+        var shiftVal = arr2.shift();
+        document.write("<br/>shift之后的arr2：" + arr2);
+        document.write("<br/>" + shiftVal);
+
+        /* arrayObject.splice(index,howmany,item1,.....,itemX);//数组拼接
+        参数	描述
+        index	必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。
+        howmany	必需。要删除的项目数量。如果设置为 0，则不会删除项目。
+        item1, ..., itemX	可选。向数组添加的新项目。
+
+        添加：arr.splice(1,0,value)
+        删除：arr.splice(1,不为0的数字)
+        替换：arr.splice(1,不为0的数字,value)
+        */
+        arr2.splice(2, 0, '7', '8', 9);
+        document.write("<br/>splice添加之后的arr2：" + arr2);
+        arr2.splice(3, 1);
+        document.write("<br/>splice删除之后的arr2：" + arr2);
+        arr2.splice(1, 1, "999");
+        document.write("<br/>splice替换之后的arr2：" + arr2);
+
+        //slice：裁剪数组(开始的位置，结束的位置)
+        var sliceVal1 = arr2.slice(2);
+        var sliceVal2 = arr2.slice(2, 4);
+        var sliceVal3 = arr2.slice(3, 4);
+        document.write("<br/>slice裁剪之后的sliceVal1=" + sliceVal1);
+        document.write("<br/>slice裁剪之后的sliceVal2=" + sliceVal2);
+        document.write("<br/>slice裁剪之后的sliceVal3=" + sliceVal3);
+
+        //sort：数组的排序，默认是按照字符串排序
+        var arr3 = [1, 3, 6, 12, 8, 23, 9];
+        var result = arr3.sort();
+        document.write("<br/><br/>sort之后的arr3=" + arr3);
+        document.write("<br/>sort之后的result=" + result);
+        var result2 = arr3.sort(sortNum);
+        function sortNum(a, b) {
+            //以数字的形式从小到大的排序
+            return a - b;//b-a代表逆序，由大到小
+        };
+        document.write("<br/>sortNum之后的arr3=" + arr3);
+        document.write("<br/>sortNum之后的result2=" + result2);
+
+        //reverse：逆序
+        var result3 = arr3.reverse();
+        document.write("<br/>reverse之后的arr3=" + arr3);
+        document.write("<br/>reverse之后的result3=" + result3);
+
+        //concat：合并几个数组
+
+        //join：将数组拼接为字符串
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
