@@ -6,10 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script type="text/javascript">
+        //打印等腰三角形
+        function daSanjiaoxing(hang) {
+            for (var i = 1; i <= hang; i++) {
+                for (var j = 1; j <= hang * 2 - 1; j++) {
+                    if (j <= hang - i) {
+                        document.write("<span style='color:red;'>*</span>");
+                    } else if (j <= hang + i - 1) {
+                        document.write("<span>*</span>");
+                    }
+                }
+                document.write("<br/>");
+            }
+        }
+        daSanjiaoxing(20);
+
         /*  *
          *&*
         *&&&*
         *&&&&&* */
+        //打印空心菱形
         for (var i = 0; i <= 20; i++) {
             for (var j = 0; j <= 20 - i; j++) {
                 document.write("&nbsp;&nbsp;");
