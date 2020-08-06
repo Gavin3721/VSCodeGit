@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Html本地数据库测试Demo</h3>
+    <table>
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" name="txtName" id="txtName" required /></td>
+        </tr>
+        <tr>
+            <td>标题：</td>
+            <td><input type="text" name="txtTitle" id="txtTitle" required /></td>
+        </tr>
+        <tr>
+            <td>留言：</td>
+            <td><input type="text" name="txtWords" id="txtWords" required /></td>
+        </tr>
+    </table>
+    <input type="button" value="保存" id="btnSave" />
+    <hr />
+    <input type="button" value="展示所哟数据" onclick="showAllTheData()" />
+    <table id="tblData">
+    </table>
+    <script>
+        /*
+        第一步：openDatabase：这个方法打开连接现有数据库或创建新数据库对象
+        openDatabase(数据库名，版本号（写死就行）,数据库的描述,设置大小（单位为kb），回调函数（可省略）);
+        初次调用时创建数据库，以后就是建立连接了。
+        创建的数据库就存在本地，路径如下：
+        C:\Users\Administrator\AppData\Local\Google\Chrome\User Data\Default\databases\http_localhost_*
+        创建的是一个sqllite数据库，可以用SQLiteSpy打开文件，可以看到里面的数据*/
+        var dataBase = openDatabase("students", "1.0", "学生数据库", 1024 * 1024, function () { });
+        //dropTable();
+        if (!dataBase) {
+            console.log("该数据库已存在！");
+            queryData();
+        } else {
+            console.log("数据库创建成功！");
+            createTable();
+            insertData();
+            queryData();
+        }
+
+
+        /* 
+        第二步：创建数据表
+        executeSql函数有四个参数，其意义分别是：
+        1）表示查询的字符串，使用的SQL语言是SQLite 3.6.19。（必选）
+        2）插入到查询中问号所在处的字符串数据。（可选）
+        3）成功时执行的回调函数。返回两个参数：tx和执行的结果。（可选）
+        4）一个失败时执行的回调函数。返回两个参数：tx和失败的错误信息。（可选）*/
+        function createTable() {
+            dataBase.transaction(function (tx) {
+                tx.executeSql(
+                    "create table if not exists stu (id integer primary key AutoIncrement,name varchar(20),path varchar(20))",
+                    [],
+                    function (tx, result) { console.log('创建stu表成功'); },
+                    function (tx, error) {
+                        console.log('创建stu表失败:' + error.message);
+                    });
+            });
+        }
+
+        //添加数据
+        function insertData() {
+            dataBase.transaction(function (tx) {
+                tx.executeSql(
+                    "insert into stu (name,path) values(?,?)",
+                    ['张三', '四川省'],
+                    function () { console.log('添加数据成功'); },
+                    function (tx, error) {
+                        console.log('添加数据失败: ' + error.message);
+                    });
+            });
+        }
+
+        //查询数据
+        function queryData() {
+            dataBase.transaction(function (tx) {
+                tx.executeSql(
+                    "select * from stu", [],
+                    function (tx, result) { //执行成功的回调函数
+                        //在这里对result 做你想要做的事情吧...........
+                        //result：查询出来的数据集。其数据类型为 SQLResultSet ，就如同C#中的DataTable
+                        /* interface SQLResultSet {
+                            readonly attribute long insertId;
+                            readonly attribute long rowsAffected;
+                            readonly attribute SQLResultSetRowList rows;
+                        }; 
+                        其中最重要的属性—SQLResultSetRowList 类型的 rows 是数据集的“行” ,rows 有两个属性：length、item
+                        获取查询结果的第一行列名为name的值 ：result.rows.item(0).name
+                        */
+                        console.log(result.rows.item(0).name);
+
+                    },
+                    function (tx, error) {
+                        console.log('查询失败: ' + error.message);
+                    });
+            });
+        }
+
+        //更新数据
+        function updataData() {
+            dataBase.transaction(function (tx) {
+                tx.executeSql(
+                    "update stu set name = ? where id= ?",
+                    [name, id],
+                    function (tx, result) {
+                    },
+                    function (tx, error) {
+                        console.log('更新失败: ' + error.message);
+                    });
+            });
+        }
+
+        //删除数据
+        function deleteData() {
+            dataBase.transaction(function (tx) {
+                tx.executeSql(
+                    "delete from stu where id= ?",
+                    [id],
+                    function (tx, result) {
+                    },
+                    function (tx, error) {
+                        console.log('删除失败: ' + error.message);
+                    });
+            });
+        }
+
+        //删除数据表
+        function dropTable() {
+            dataBase.transaction(function (tx) {
+                tx.executeSql('drop table stu');
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

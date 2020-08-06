@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media screen and (min-width:1200px) {
+            body {
+                background-color: rgb(21, 133, 36);
+                transition: all 1s;
+                color: white;
+                font-size: 20px;
+            }
+
+            #large {
+                display: block;
+            }
+
+            #middle {
+                display: none;
+            }
+
+            #small {
+                display: none;
+            }
+        }
+
+        @media screen and (min-width:767px) and (max-width:1200px) {
+            body {
+                background-color: rgb(57, 57, 180);
+                transition: all 1s;
+                color: white;
+                font-size: 20px;
+            }
+
+            #large {
+                display: none;
+            }
+
+            #middle {
+                display: block;
+            }
+
+            #small {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width:767px) {
+            body {
+                background-color: rgb(197, 79, 25);
+                transition: all 1s;
+                color: white;
+                font-size: 20px;
+            }
+
+            #large {
+                display: none;
+            }
+
+            #middle {
+                display: none;
+            }
+
+            #small {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="large">large</div>
+    <div id="middle">middel</div>
+    <div id="small">small</div>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script language="javascript">
+        //设定整体框架适应屏幕大小
+        function setFrame() {
+            $("#dragWrap").width($('body').width());
+            $("#dragBody").width($('body').width());
+            $("#dragWrap").height($(document).height() - 50);
+        }
+
+        $(document).ready(function () {
+            setFrame();//加载时，重设框架高宽度
+
+            //鼠标移动操作
+            var drag = function drag() {
+                this.dragWrap = $("#dragWrap");
+                this.init.apply(this, arguments);
+            };
+            drag.prototype = {
+                constructor: drag,
+                _dom: {},
+                _x: 0,
+                _y: 0,
+                _top: 0,
+                _left: 0,
+                move: false,
+                down: false,
+                init: function () {
+                    this.bindEvent();
+                },
+                bindEvent: function () {
+                    var t = this;
+                    $('body').on('mousedown', '#dragWrap', function (e) {
+                        e && e.preventDefault();
+                        if (!t.move) {
+                            t.mouseDown(e);
+                        }
+                    });
+                    $('body').on('mouseup', '#dragWrap', function (e) {
+                        t.mouseUp(e);
+                    });
+
+                    $('body').on('mousemove', '#dragWrap', function (e) {
+                        if (t.down) {
+                            t.mouseMove(e);
+                        }
+                    });
+                },
+                mouseMove: function (e) {
+                    e && e.preventDefault();
+                    this.move = true;
+                    var x = this._x - e.clientX,
+                        y = this._y - e.clientY,
+                        dom = $('#dragWrap');
+                    dom.scrollLeft(this._left + x);
+                    dom.scrollTop(this._top + y);
+                },
+                mouseUp: function (e) {
+                    e && e.preventDefault();
+                    this.move = false;
+                    this.down = false;
+                    this.dragWrap.css('cursor', '');
+                },
+                mouseDown: function (e) {
+                    this.move = false;
+                    this.down = true;
+                    this._x = e.clientX;
+                    this._y = e.clientY;
+                    this._top = $('#dragWrap').scrollTop();
+                    this._left = $('#dragWrap').scrollLeft();
+                    this.dragWrap.css('cursor', 'move');
+                }
+            };
+            var drag = new drag();
+
+        });
+    </script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background-color: #fff;
+        }
+
+        body {
+            position: relative;
+            height: 100%;
+            font-size: 12px;
+            font-family: "Microsoft YaHei";
+            _font-family: "SimSun";
+        }
+
+        img,
+        a:hover img {
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            cursor: pointer;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        #leftBar {
+            width: 0.9%;
+            height: 99.1%;
+            top: 0.9%;
+            left: 0.08%;
+        }
+
+        #dragWrap {
+            position: relative;
+            overflow: hidden;
+            padding-top: 50px;
+        }
+
+        #dragWrap img {
+            vertical-align: top;
+        }
+
+        #dragBody {
+            width: 6974px;
+            position: absolute;
+            zoom: 1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="dragWrap">
+        <div id="dragBody">
+            <img src="img/logo.jpg" style="width:1000px;height:1000px;" alt="" />
+        </div>
+    </div>
+</body>
+
+</html>

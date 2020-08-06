@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Html本地存世测试Demo</h3>
+    <!-- 通过本地存储（Local Storage），web 应用程序能够在用户浏览器中对数据进行本地的存储。
+    在 HTML5 之前，应用程序数据只能存储在 cookie 中，包括每个服务器请求。
+    本地存储则更安全，并且可在不影响网站性能的前提下将大量数据存储于本地。
+    与 cookie 不同，存储限制要大得多（至少5MB），并且信息不会被传输到服务器。
+    本地存储经由起源地（origin）（经由域和协议）。所有页面，从起源地，能够存储和访问相同的数据。 -->
+
+    <script>
+        if (typeof (Storage) !== "undefined") {
+            // 针对 localStorage/sessionStorage 的代码
+            console.log("支持localStorage");
+
+            /* localStorage 对象存储的是没有截止日期的数据。当浏览器被关闭时数据不会被删除，
+            在下一天、周或年中，都是可用的。 */
+            localStorage.setItem("firstname", "Gates1111");// 存储
+            document.write("localStorage取回的值1：" + localStorage.getItem("firstname"));
+            //如下写法也可以
+            localStorage.lastname = "Gates2222";// 存储
+            document.write("<br/>localStorage取回的值2：" + localStorage.lastname);
+            //删除某个数值
+            //localStorage.removeItem("lastname");
+            //清空所有的key-value数据
+            //localStorage.clear();
+
+            /* sessionStorage 对象等同 localStorage 对象，不同之处在于针对一个 session 存储数据。
+            如果用户关闭具体的浏览器标签页，数据也会被删除。 */
+            sessionStorage.setItem("str", "测试sessionStorage的数据");// 存储
+            document.write("<br/>sessionStorage取回的值：" + sessionStorage.getItem("str"));
+            //sessionStorage.clear();
+
+        } else {
+            // 抱歉！不支持 Web Storage ..
+            console.log("不支持localStorage");
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/fenye_demo.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            outline: none;
+            border: 0;
+        }
+
+        #container {
+            width: 900px;
+            height: 600px;
+            border: 1px solid green;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        #topBar {
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            color: white;
+            font-size: 20px;
+            text-align: left;
+            background-color: rgb(9, 99, 105);
+        }
+
+        #topBar img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            padding-left: 50px;
+        }
+
+        #searchStr {
+            margin-left: 50px;
+            width: 250px;
+            height: 50px;
+            font-size: 15px;
+            padding-left: 15px;
+            vertical-align: middle;
+        }
+
+        #searchBtn {
+            width: 60px;
+            height: 50px;
+            margin-left: -6px;
+            vertical-align: middle;
+            color: white;
+            font-size: 15px;
+            background-color: rgba(227, 250, 17, 0.623);
+            cursor: pointer;
+        }
+
+        #fenYeDiv {
+            height: 100px;
+            width: 100%;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #fenYeDiv button {
+            width: 80px;
+            height: 30px;
+            color: white;
+            margin: 10px;
+            background-color: #398BFC;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #jumpPage {
+            width: 50px;
+            height: 30px;
+            font-size: 15px;
+            border: 1px solid #398BFC;
+            border-radius: 10px;
+            padding-left: 10px;
+            vertical-align: middle;
+        }
+
+        #showTable {
+            width: 100%;
+            min-height: 50px;
+        }
+
+        #showTable th,
+        td {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid rgba(140, 228, 81, 0.329);
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #398BFC;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        #tips {
+            text-align: center;
+            margin-top: 30px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="topBar">
+            <img src="img/25.png" />JS的分页展示Demo
+            <input type="text" name="searchStr" id="searchStr" placeholder="&nbsp;&nbsp;请输入要查找的内容" maxlength="10" />
+            <input type="button" name="searchBtn" id="searchBtn" value="搜&nbsp;索" />
+        </div>
+        <table id="showTable" cellpadding="0" cellspacing="0">
+        </table>
+        <p id="tips"></p>
+        <div id="fenYeDiv">
+            <button id="firstPage">首&nbsp;&nbsp;页</button>
+            <button id="prevPage">上一页</button>
+            <span>第<span id="currentPageIndex">0</span>页，共<span id="pageCount">0</span>页</span>
+            <button id="nextPage">下一页</button>
+            <button id="lastPage">末&nbsp;&nbsp;页</button>
+            <input type="text" name="jumpPage" id="jumpPage" placeholder="页数" />
+            <button id="jumpBtn">跳&nbsp;&nbsp;转</button>
+        </div>
+    </div>
+    <br />
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            outline: 0px;
+        }
+
+        #mdiv {
+            width: 100%;
+            height: 0px;
+            line-height: 50px;
+            background-color: green;
+            text-align: center;
+            color: #ffffff;
+            overflow: hidden;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            /* 使用display: none;无法出现transition的过渡效果 */
+            /* display: none; */
+            transition: all 0.5s;
+        }
+
+        #show {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background-color: green;
+            text-align: center;
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mdiv">点击切换显示隐藏</div>
+    <div id="show"><img src="img/down-arr-16x16.png" /></div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var mdiv = document.getElementById("mdiv");
+            var mdiv2 = document.getElementById("show");
+            var img = document.getElementsByTagName("img")[0];
+            mdiv2.onclick = function () {
+                var h = mdiv.style.height;
+                if (h == "0px" || h == "") {
+                    mdiv.style.height = "50px";
+                    img.src = "img/close-16x16.png";
+                } else {
+                    mdiv.style.height = "0px";
+                    img.src = "img/down-arr-16x16.png";
+                }
+                /*  var isShow = mdiv.style.display;
+                 if (isShow == "block") {
+                     mdiv.style.display = "none";
+                     img.src = "img/down-arr-16x16.png";
+                 } else {
+                     mdiv.style.display = "block";
+                     img.src = "img/close-16x16.png";
+                 } */
+            };
+        };
+
+    </script>
+</body>
+
+</html>

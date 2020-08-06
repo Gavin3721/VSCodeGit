@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #mDiv {
+            width: 50%;
+            height: 300px;
+            border: 20px solid rgb(206, 22, 22);
+            background-color: rgb(7, 163, 7);
+        }
+    </style>
+    <script type="text/javascript">
+        //练习四：小球弹起
+        /* var height = 100;
+        var zongSum = 0;
+        for (var l = 1; l <= 10; l++) {
+            if (l == 1) {
+                zongSum = height;
+            } else {
+                zongSum += height * 2;
+            }
+            height = height / 2;
+            // document.write("<br/> " + zongSum);
+        }
+        document.write("<br/>第四题：小球第十次弹起经过的总距离为" + zongSum); */
+
+        //练习五：韩信点兵
+        /* for (var m = 1; m > 0; m++) {
+            if (m % 5 == 1 && m % 6 == 5 && m % 7 == 4 && m % 11 == 10) {
+                document.write("<br/>至少有" + m + "个士兵<br/>");
+                break;
+            }
+        } */
+
+        // 练习七：打印乘法表
+        /* for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                var num = j * i;
+                document.write(j + "x" + i + "=" + num + "&nbsp;&nbsp;&nbsp;&nbsp;");
+            }
+            document.write("<br/>");
+        } */
+
+        /* var aa = false;
+        var bb = true;
+        alert(typeof aa);
+        alert(typeof bb);
+
+        var objArr = []; */
+
+        window.onload = function () {
+            /* var box1 = document.getElementById("box1"); */
+            //console.log(box1);
+            /* console.log(box1.childNodes);
+            console.log(box1.children);
+            console.log(box1.previousElementSibling);
+            console.log(box1.nextElementSibling);
+            console.log(box1.previousSibling);
+            console.log(box1.nextSibling); */
+            //特殊情况的获取
+            /* console.log(document.myForm);
+            console.log(document.myForm.account); */
+            //选择器获取
+            /* var select1 = document.querySelector("p");//只获取满足条件的第一个元素
+            var select2 = document.querySelectorAll("#box1 div");
+            console.log("querySelector获取的：", select1);
+            console.log("querySelectorAll获取的：", select2); */
+
+            /* var node = document.getElementById("tips");
+            //第一种方法
+            console.log("attributes", node.attributes);
+            //第二种方法
+            console.log("getAttribute", node.getAttribute("title"));
+            //第三种方法
+            console.log("getAttributeNode", node.getAttributeNode("class"));
+            //第四种方法
+            console.log("直接节点.属性：", node.class); */
+
+            //动态添加节点
+            /* var ulEle = document.getElementsByTagName("ul")[0];
+            /* var eleNode = document.createElement("li");
+            var textNode = document.createTextNode("新加的");
+            eleNode.appendChild(textNode);
+            console.log(eleNode);
+            ulEle.appendChild(eleNode); 
+
+            //节点的克隆
+            var l1 = document.getElementById("l1");
+            var l2 = document.getElementById("l2");
+            var newNode = l2.cloneNode(true);
+            ulEle.insertBefore(newNode, l1); */
+
+            /* var positionNum = 0;
+            //通过transform移动div的位置
+            document.getElementById("mdiv").onclick = function () {
+                positionNum += 20;
+                //this.style.transform = "translateX(" + positionNum + "px)";//横向移动
+                //this.style.transform = "translateY(" + positionNum + "px)";//纵向移动
+                this.style.transform = "translate(" + positionNum + "px," + positionNum + "px)";//斜着移动
+            };
+
+            //测试文本框的键盘输入事件
+            document.getElementById("mtext").onfocus = function () { console.log("onfocus执行了"); };
+            document.getElementById("mtext").onblur = function () { console.log("onblur执行了"); };
+            document.getElementById("mtext").onkeydown = function () { console.log("onkeydown执行了"); };
+            document.getElementById("mtext").onkeypress = function () { console.log("onkeypress执行了"); };
+            document.getElementById("mtext").onkeyup = function () { console.log("onkeyup执行了"); };
+
+
+            //-----------------处理兼容性问题-----------------
+            //添加事件
+            function addEvent(dom, eventType, fun) {
+                if (document.addEventListener) {//判断有没有这个方法（IE8及以下不支持该方法）
+                    dom.addEventListener(eventType, fun, false);//第三个参数是否在捕获或冒泡阶段执行
+                } else if (document.attachEvent) {
+                    dom.attachEvent("on" + eventType, fun);
+                } else {
+                    dom['on' + eventType] = fun;
+                }
+            }
+            //移除事件
+            function removeEvent(dom, eventType, fun) {
+                if (document.removeEventListener) {
+                    dom.removeEventListener(eventType, fun, false);
+                } else if (document.detachEvent) {
+                    dom.detachEvent("on" + eventType, fun);
+                } else {
+                    dom['on' + eventType] = fun;
+                }
+            }
+
+            function shijianTest() {
+                console.log("shijianTest-按钮被点击了");
+            };
+
+            function shijianTest2() {
+                removeEvent(document.getElementById("btn"), "click", shijianTest);
+                console.log("shijianTest2-移除事件按钮被点击了");
+            };
+
+            addEvent(document.getElementById("btn"), "click", shijianTest);
+            addEvent(document.getElementById("btn2"), "click", shijianTest2); */
+
+
+
+        };
+
+    </script>
+</head>
+
+<body>
+    <!-- <div id="box1">
+        asdasdasd
+        <p class="mtext">aaaa</p>
+        <img src="img/2.jpg" />
+        <div>这是文本123</div>
+        tttttttt
+    </div>
+    <div id="box2" class="div mtext"></div>
+    <p id="tips" class="mtext" title="这是提示信息">bbbb</p>
+    <form name="myForm">
+        用户名：<input name="account" type="text" />
+    </form> -->
+
+    <!-- <ul>
+        <li id="l1">1111</li>
+        <li id="l2" onclick="fun()">2222</li>
+        <li id="l3">3333</li>
+    </ul> -->
+
+    <!-- <div id="mdiv" style="width:30px;height:30px;background-color: red;"></div>
+    测试文本框的键盘输入事件：<input id="mtext" type="text" />
+    <br /><br />
+    <button id="btn">按钮</button>
+    <button id="btn2">删除上边的按钮事件</button> -->
+
+    <div style="width:300px;border:1px solid red;">
+        <ul style="width:200px;border:1px solid green;">
+            <li style="width:100px;border:1px solid yellow;">111</li>
+        </ul>
+    </div>
+    <script>
+        //事件冒泡
+        document.getElementsByTagName("li")[0].onclick = function () { console.log("li被点击了"); };
+        document.getElementsByTagName("ul")[0].onclick = function () { console.log("ul被点击了"); };
+        document.getElementsByTagName("div")[0].onclick = function () { console.log("div被点击了"); };
+    </script>
+</body>
+
+</html>
