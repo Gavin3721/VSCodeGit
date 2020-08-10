@@ -1,7 +1,6 @@
-var deptInfoArr = [];//所有部门信息
 var currentPageIndex = 1;//当前显示的页数
 var pageCountNum = 1;//默认总页数
-var showNum = 5;//一页显示的数据量
+var showNum = 8;//一页显示的数据量
 var currentSelectDeptId = "";//当前选中部门id
 
 $(document).ready(function () {
@@ -28,14 +27,14 @@ $(document).ready(function () {
     //上一页
     document.getElementById("prevPage").onclick = function () {
         if (currentPageIndex > 1) {
-            showDeptInfoList(currentPageIndex - 1)
+            showDeptInfoList(currentPageIndex - 1);
         }
     }
 
     //下一页
     document.getElementById("nextPage").onclick = function () {
         if (currentPageIndex < pageCountNum) {
-            showDeptInfoList(currentPageIndex + 1)
+            showDeptInfoList(currentPageIndex + 1);
         }
     }
 
@@ -57,18 +56,6 @@ $(document).ready(function () {
         showDeptInfoList(jumpPage);
     }
 });
-
-//初始化本地存储数据
-function initLocalStorageData() {
-    if (localStorage.getItem("deptInfoArr") == null) {
-        localStorage.setItem("deptInfoArr", JSON.stringify(deptInfoArrData));
-    }
-    if (localStorage.getItem("userInfoArr") == null) {
-        localStorage.setItem("userInfoArr", JSON.stringify(userInfoArrData));
-    }
-    deptInfoArr = JSON.parse(localStorage.getItem("deptInfoArr"));
-    userInfoArr = JSON.parse(localStorage.getItem("userInfoArr"));
-}
 
 //保存部门信息
 function saveDeptNm() {
@@ -177,7 +164,6 @@ function resetDeptInfo() {
 
 //展示数据列表
 function showDeptInfoList(pageNum) {
-    console.log(deptInfoArr);
     var tempArr = [], deptIdStr = $("#deptIdStr").val().trim(), deptNmStr = $("#deptNmStr").val().trim();//查询条件
     if (deptIdStr != "" || deptNmStr != "") {
         //如果条件不为空，则先找出符合要求的数据
@@ -251,9 +237,9 @@ function updateInfo(deptId) {
     tableStr += "<tr align='center'><td>部门编号：</td><td>" + dept.deptId + "</td></tr>";
     tableStr += "<tr align='center'><td>部门名称：</td><td><input id='deptNm_n' type='text' class='form-control' value='" + dept.deptNm + "'></td></tr>";
     tableStr += "<tr align='center'><td>英文简称：</td><td><input id='abbreviation_n' type='text' class='form-control' value='" + dept.abbreviation + "'></td></tr>";
-    tableStr += "<tr align='center'><td>职能：</td><td><input id='zhiNeng_n' type='text' class='form-control' value='" + dept.zhiNeng + "'></td></tr>";
+    tableStr += "<tr align='center'><td>职&nbsp;&nbsp;能：</td><td><input id='zhiNeng_n' type='text' class='form-control' value='" + dept.zhiNeng + "'></td></tr>";
     tableStr += "<tr align='center'><td>创建时间：</td><td>" + dept.createDate + "</td></tr>";
-    tableStr += "<tr align='center'><td>备注：</td><td><input id='details_n' type='text' class='form-control' value='" + dept.details + "'></td></tr>";
+    tableStr += "<tr align='center'><td>备&nbsp;&nbsp;注：</td><td><input id='details_n' type='text' class='form-control' value='" + dept.details + "'></td></tr>";
     tableStr += "</table>";
 
     fyAlert.alert({

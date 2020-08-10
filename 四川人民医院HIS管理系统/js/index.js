@@ -30,8 +30,14 @@ function initUserData() {
                 } else {
                     img = "woman.jpg";
                 }
+                $("#userImg").attr("src", "img/user/" + img);
+            } else {
+                if (img.length > 100) {
+                    $("#userImg").attr("src", img);
+                } else {
+                    $("#userImg").attr("src", "img/user/" + img);
+                }
             }
-            $("#userImg").attr("src", "img/user/" + img);
         }
     } else {
         window.location.href = "login.html";

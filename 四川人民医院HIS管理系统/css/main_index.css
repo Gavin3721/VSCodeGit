@@ -77,11 +77,12 @@
 #signOutSys{
   text-decoration: none;
   margin-left: 20px;
-  color:rgb(209, 230, 199);
+  color:rgb(243, 243, 243);
 }
 
 #signOutSys:hover{
-  color:rgb(199, 94, 68);
+  color:rgb(15, 104, 50);
+  text-decoration: underline;
 }
 
 #bottom{

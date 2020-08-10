@@ -1,6 +1,11 @@
 #container{
-    position:relative;
-    top:130px;
+    position: absolute;
+    margin: auto;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    height:320px;
 }
 
 #logodiv{
@@ -51,6 +56,10 @@
     font-size:15px;
     margin-bottom:5px;
     cursor: pointer;
+}
+
+#loginbtn:hover{
+    opacity: 0.8;
 }
 
 .required {
