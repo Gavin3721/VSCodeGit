@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* document.write(([12] == "12") + "<br/>");//对象和字符串比较，是把对象 toString() 转换为字符串之后再进行比较的
+        document.write(Number("123aa") + "<br/>");
+        document.write(parseFloat("123.23q4.234aa") + "<br/>");
+        var a = 3;
+        document.write((a *= a) + "<br/>"); */
+
+        //使用Set进行去重
+        /* var array = ["aa", "bb", 1, 3, 2, 4, 2, 1, 3, true, false, "aa", "cc", false];
+        console.log(new Set(array)); */
+
+        document.write(Number(true) + "<br/>");
+        document.write(Number(false) + "<br/>");
+        document.write(Number(null) + "<br/>");
+        document.write(Number('') + "<br/>");
+        document.write(Boolean(true) + "<br/>");
+        document.write(Boolean(false) + "<br/>");
+        document.write(Boolean("false") + "<br/>");
+        document.write(Boolean("aaaaa") + "<br/>");
+        document.write(Boolean("123123") + "<br/>");
+        document.write(Boolean("") + "<br/>");
+
+        //map的用法
+        /* var map = new Map();
+        map.set("key", "value");
+        map.get("key");
+        map.has("key");
+        map.delete("key");
+        console.log(map); */
+
+        //``是字符串模板属性：模板字面量,是允许嵌入表达式的字符串字面量。你可以使用多行字符串和字符串插值功能
+        /* document.write(`
+        123123213
+        123123123
+        <br/>
+        `);
+        document.write((`\`` === "`") + "<br/>");
+        */
+
+        var numbers = [4, 9, 16, 25, 2, 12, 33, 1];
+        /* //数组的forEach
+        numbers.forEach(myFunction);
+        function myFunction(item, index) {
+            document.write(item + "__" + index + "<br/>");
+        } */
+
+        //数组的map
+        let flag1 = null;
+        let flag2 = null;
+        let obj = {
+            name: "TomHe",
+            age: 20,
+            say: function () {
+                console.log("hello");
+            }
+        };
+        let res1 = numbers.map(function (value) {// map接收一个参数时
+            flag1 = this;
+            return value + 1;
+        });
+        console.log(flag1);
+        console.log(res1);
+
+        let res2 = numbers.map(function (value) {// map接收两个参数时
+            flag2 = this;
+            return value - 1;
+        }, obj);
+        console.log(flag2);
+        console.log(res2);
+
+
+        var test = new Date();
+        document.write(test.constructor + "<br/>");
+        if (test.constructor == Date) {
+            document.write("This is a Date");
+        }
+
+    </script>
+</body>
+
+</html>

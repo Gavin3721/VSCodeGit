@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 方法一：vertical-align 作用单元格时，才生效，所以一般会结合dispaly:table-cell; 一起使用 */
+        /* p {
+            border: 1px solid red;
+            height: 150px;
+            display: table-cell;
+            vertical-align: middle;
+        } */
+
+        /*方法二：父元素设置line-heighth和height高度相等，子元素设置vertical-align: middle;和line-height
+        line-height: 1;这里的1指与父级的字体大小相同，也可以直接写具体的px*/
+        p {
+            height: 200px;
+            line-height: 200px;
+            border: 1px solid red;
+            font-size: 16px;
+        }
+
+        p span {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+            /* line-height: calc(200px/3); */
+        }
+
+
+        /* 方法1：常规方法 - 定宽元素，此方法缺点：内层元素必须设定（固定）宽度 */
+        .container1 {
+            background: beige;
+            height: 500px;
+        }
+
+        .center {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            background: aqua;
+        }
+
+        /* 方法2：不定宽元素 - 绝对定位 
+        1.外层绝对定位，内层相对定位，外层的外层相对定位
+        2.外层左浮动，内层左浮动 3.外层右移50%，内层左移50% */
+        ul li {
+            list-style-type: none;
+            border: 1px solid red;
+        }
+
+        .container2 {
+            position: relative;
+        }
+
+        nav ul:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .pages3 {
+            position: absolute;
+            float: left;
+            left: 50%;
+        }
+
+        .pages3 li {
+            float: left;
+            position: relative;
+            right: 50%;
+        }
+
+        .pages3 li:not(:first-child) {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<h3>行内元素：多行文本垂直居中的方法</h3>
+<p>
+    <span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dignissimos earum eligendi iusto, nam qui
+        quia quidem vel veritatis vitae.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dignissimos earum eligendi iusto, nam qui quia
+        quidem vel veritatis vitae.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dignissimos earum eligendi iusto, nam qui quia
+        quidem vel veritatis vitae.
+    </span>
+</p>
+<br />
+<h3>块级元素：水平居中，方法一</h3>
+<div class="container1">
+    <div class="center"></div>
+</div>
+<br />
+<h3>块级元素：水平居中，方法二</h3>
+<header class="container2">
+    <nav>
+        <ul class="pages3">
+            <li>项目1</li>
+            <li>项目2</li>
+            <li>项目3</li>
+        </ul>
+    </nav>
+</header>
+
+</html>

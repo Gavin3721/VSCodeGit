@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .center {
+            margin: 0 200px;
+            background: red;
+        }
+
+        .left {
+            float: left;
+            width: 200px;
+            background: blue;
+            height: 100%;
+        }
+
+        .right {
+            float: right;
+            width: 200px;
+            background: green;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>第一种：左右侧采用浮动 中间采用margin-left 和 margin-right 方法。
+        左栏左浮动，右栏右浮动，中间栏放最后。</h3>
+    <div class="left">左边栏</div>
+    <div class="right">右边栏</div>
+    <div class="center">中间栏</div>
+</body>
+
+</html>
